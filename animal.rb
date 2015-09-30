@@ -7,15 +7,13 @@ class Animal
   attr_reader :name
 
   def initialize(
-    has_fur = false,
-    color   = nil,
-    name    = nil
+    properties = {}
   )
     puts '== constructing an animal =='
 
-    @has_fur  = has_fur
-    @color    = color
-    @name     = name
+    @has_fur  = properties['has_fur'] || nil
+    @color    = properties['color'] || nil
+    @name     = properties['name'] || nil
   end
 
   def color=(value)
@@ -49,9 +47,7 @@ class Animal
     puts "Calling #{self.inspect}::#{__method__}"
     pp(o)
     new(
-        o[0]['data']['has_fur'],
-        o[0]['data']['color'],
-        o[0]['data']['name']
+        o[0]['data']
     )
   end
 

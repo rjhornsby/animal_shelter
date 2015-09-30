@@ -3,11 +3,11 @@ class Dog < Animal
   attr_reader :bark
 
   def initialize(
-    bark = nil
+    properties = {}
   )
     puts '== constructing a dog =='
     super
-    @bark = bark
+    @bark = properties['bark'] || nil
   end
 
   def bark=(value)
@@ -35,7 +35,7 @@ class Dog < Animal
     pp(*o)
 
     new(
-        o[0]['data']['bark'],
+        o[0]['data'],
     )
   end
 
